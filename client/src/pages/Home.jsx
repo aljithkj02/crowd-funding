@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useStateContext } from '../context';
+import { DisplayCampaigns } from '../components';
 
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,11 +16,16 @@ function Home() {
     const data = await getCampaigns();
     setCampaigns(data);
     setIsLoading(false);
-    console.log({ data })
   }
 
   return (
-    <div>Home</div>
+    <div>
+      <DisplayCampaigns
+        title="All Campaigns"
+        isLoading={isLoading}
+        campaigns={campaigns}
+      />
+    </div>
   )
 }
 
